@@ -1,0 +1,10 @@
+# Jekyll Configuration
+title: "AI Simplified - Master's Student Portfolio"
+description: "Demystifying AI Engineering and Data Analytics for everyone."
+url: "" # Update this when you host on github pages (e.g. https://username.github.io/repo)
+baseurl: ""
+
+# Exclude these files from the build
+exclude:
+  - site_guardrails.md
+  - README.md

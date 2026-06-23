@@ -1,0 +1,20 @@
+---
+layout: default
+title: "Courses & Deep Dives"
+---
+
+<div style="max-width: 800px; margin: 0 auto;">
+    <h1 style="font-size: 48px; margin-bottom: 20px; text-align: center;">Courses & TPs</h1>
+    <p style="text-align: center; font-size: 18px; color: var(--light-text); margin-bottom: 60px;">Practical breakdowns of AI engineering and data analytics. No fluff.</p>
+
+    <ul class="post-list">
+      {% for post in site.posts %}
+        <li class="post-item" style="background: var(--card-bg); padding: 25px; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+            <h2 style="margin-top: 0; font-size: 24px;"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+            <span class="post-date" style="display: block; margin-bottom: 15px;">Published on {{ post.date | date: "%B %d, %Y" }}</span>
+            <p style="margin-top: 0; color: #4b5563; font-size: 16px;">{{ post.excerpt | strip_html | truncatewords: 40 }}</p>
+            <a href="{{ post.url | relative_url }}" style="font-weight: 600;">Read the full breakdown &rarr;</a>
+        </li>
+      {% endfor %}
+    </ul>
+</div>

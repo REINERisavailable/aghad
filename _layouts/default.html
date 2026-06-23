@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ site.title | default: "AI Simplified" }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+    <div class="container">
+        
+        <!-- Top Navigation Bar -->
+        <nav class="navbar">
+            <a href="{{ '/' | relative_url }}" class="navbar-brand">AI Simplified</a>
+            <div class="nav-links">
+                <a href="{{ '/about.html' | relative_url }}">My Story</a>
+                <a href="{{ '/courses.html' | relative_url }}">Courses & TPs</a>
+                <a href="{{ '/resources.html' | relative_url }}">Resources</a>
+                <a href="{{ '/partnerships.html' | relative_url }}">Partnerships</a>
+            </div>
+        </nav>
+
+        <!-- Dynamic Content injected here -->
+        <main>
+            {{ content }}
+        </main>
+
+        <hr>
+
+        <footer style="text-align: center; color: #64748b; font-size: 14px; margin-bottom: 40px;">
+            <div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 15px;">
+                <a href="#">LinkedIn</a>
+                <a href="#">GitHub</a>
+                <a href="#">YouTube</a>
+                <a href="mailto:contact@example.com">Email</a>
+            </div>
+            <p>&copy; 2026 AI Simplified. Built with Passion.</p>
+        </footer>
+
+    </div>
+</body>
+</html>

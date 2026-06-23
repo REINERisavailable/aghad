@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post 2 Carousel</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&display=swap');
+        
+        body { margin: 0; padding: 0; background-color: #f0fdf4; }
+        
+        .slide {
+            width: 1080px; height: 1080px; margin: 0 auto;
+            background: linear-gradient(180deg, #dcfce7 0%, #ffffff 100%);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            font-family: 'Outfit', sans-serif; color: #064e3b; padding: 80px; box-sizing: border-box;
+            page-break-after: always; position: relative; overflow: hidden;
+            border-bottom: 2px dashed #bbf7d0;
+        }
+
+        h1 { font-size: 80px; font-weight: 800; text-align: center; line-height: 1.1; margin-bottom: 40px; }
+        h2 { font-size: 55px; font-weight: 500; text-align: center; color: #047857; }
+        p { font-size: 45px; text-align: center; line-height: 1.4; font-weight: 300; max-width: 900px; }
+
+        .highlight { background-color: #10b981; color: white; padding: 0 15px; border-radius: 10px; }
+        .swipe-hint { position: absolute; bottom: 40px; right: 50px; font-size: 30px; font-weight: 800; color: #10b981; }
+
+        .circle {
+            position: absolute; top: -100px; left: -100px; width: 400px; height: 400px;
+            background: radial-gradient(circle, #a7f3d0 0%, transparent 70%); border-radius: 50%; z-index: 0;
+        }
+        .content { z-index: 1; display: flex; flex-direction: column; align-items: center; }
+
+        @media print { @page { size: 1080px 1080px; margin: 0; } .slide { border: none; } }
+    </style>
+</head>
+<body>
+
+    <div class="slide">
+        <div class="circle"></div>
+        <div class="content">
+            <h1>The <span class="highlight">Magic</span> Behind AI Vision</h1>
+            <h2>(How CNNs actually work)</h2>
+        </div>
+        <div class="swipe-hint">Swipe 👉</div>
+    </div>
+
+    <div class="slide">
+        <div class="content">
+            <h2>Step 1: The Sliding Window</h2>
+            <p>Imagine reading a book with a magnifying glass.</p>
+            <p>The AI does exactly this. It slides a "window" across an image to look for basic patterns, like simple lines and curves.</p>
+        </div>
+        <div class="swipe-hint">Swipe 👉</div>
+    </div>
+
+    <div class="slide">
+        <div class="circle" style="top: auto; bottom: -100px; right: -100px; left: auto;"></div>
+        <div class="content">
+            <h2>Step 2: Building the Big Picture</h2>
+            <p>Layer 1 finds lines.</p>
+            <p>Layer 2 combines lines into shapes.</p>
+            <p>Layer 3 combines shapes into faces, cars, or trees!</p>
+            <p>It's like building with LEGO blocks.</p>
+        </div>
+        <div class="swipe-hint">Swipe 👉</div>
+    </div>
+
+    <div class="slide">
+        <div class="content">
+            <h2>The Secret Weapon: <span class="highlight">Weight Sharing</span></h2>
+            <p>If the AI learns what a dog looks like in the top corner of a photo, it instantly knows how to find a dog in the bottom corner too.</p>
+            <p>It doesn't have to re-learn it!</p>
+        </div>
+        <div class="swipe-hint">Swipe 👉</div>
+    </div>
+
+    <div class="slide">
+        <div class="content">
+            <h1>If you had to teach an AI to recognize your favorite food...</h1>
+            <h2>What specific features would it need to look for?</h2>
+            <p style="margin-top: 50px; font-weight: 500;">Tell me in the comments! 👇</p>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+/* Sleek Pro / SF Pro Display CSS */
+:root {
+    --bg-color: #f8fafc;
+    --text-color: #0f172a;
+    --light-text: #64748b;
+    --accent-color: #2563eb;
+    --accent-hover: #1d4ed8;
+    --card-bg: #ffffff;
+    --border-color: #e2e8f0;
+    --success-bg: #dcfce7;
+    --success-text: #166534;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+
+/* Navigation */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.navbar-brand { font-weight: 800; font-size: 24px; color: var(--text-color); text-decoration: none; }
+.nav-links { display: flex; gap: 20px; }
+.nav-links a { color: var(--light-text); font-weight: 500; font-size: 15px; }
+.nav-links a:hover { color: var(--accent-color); text-decoration: none; }
+
+/* Hero Section */
+.hero { text-align: center; margin: 80px 0; }
+.hero h1 { font-size: 48px; font-weight: 900; line-height: 1.1; margin-bottom: 15px; color: #0f172a; }
+.hero h2 { font-size: 20px; font-weight: 400; color: var(--light-text); margin-bottom: 40px; }
+
+/* Forms & CTA */
+.cta-form {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    max-width: 600px;
+    margin: 0 auto;
+}
+.cta-form input[type="email"] {
+    padding: 12px; width: 65%; border: 1px solid var(--border-color);
+    border-radius: 6px; font-family: inherit; margin-right: 10px;
+}
+.cta-form button {
+    padding: 12px 24px; background-color: var(--accent-color); color: white;
+    border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-family: inherit;
+}
+.cta-form button:hover { background-color: var(--accent-hover); }
+
+/* Layouts */
+.split-section { display: flex; gap: 40px; margin: 60px 0; align-items: center; }
+.split-left, .split-right { flex: 1; }
+
+.pain-points { background: #fee2e2; padding: 30px; border-radius: 12px; border: 1px solid #fca5a5; }
+.pain-points h3 { color: #991b1b; margin-top: 0; }
+.pain-points ul { color: #7f1d1d; padding-left: 20px; }
+
+.solution { background: var(--success-bg); padding: 30px; border-radius: 12px; border: 1px solid #86efac; margin-top: 20px;}
+.solution h3 { color: var(--success-text); margin-top: 0; }
+.solution ul { color: var(--success-text); padding-left: 20px; }
+
+/* Grid / Cards */
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+.card {
+    background: var(--card-bg); padding: 25px; border-radius: 12px;
+    border: 1px solid var(--border-color); box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+.card h3 { margin-top: 0; }
+.card-price { font-size: 32px; font-weight: 800; color: var(--accent-color); margin-bottom: 10px; }
+
+/* Profile Pic */
+.profile-img { width: 100%; border-radius: 12px; object-fit: cover; aspect-ratio: 1; background: #e2e8f0; }
+
+/* Typography Basics */
+a { color: var(--accent-color); text-decoration: none; }
+a:hover { text-decoration: underline; }
+hr { border: 0; border-top: 1px solid var(--border-color); margin: 40px 0; }

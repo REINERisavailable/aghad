@@ -1,0 +1,12 @@
+---
+layout: default
+---
+
+<article class="post-content">
+    <a href="{{ '/' | relative_url }}" style="font-size: 14px;">&larr; Back to all posts</a>
+    
+    <h1 style="font-size: 36px; margin-top: 20px; margin-bottom: 5px;">{{ page.title }}</h1>
+    <p style="color: #6b7280; margin-bottom: 40px; font-size: 14px;">{{ page.date | date: "%B %d, %Y" }}</p>
+    
+    {{ content }}
+</article>

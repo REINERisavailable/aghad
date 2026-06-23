@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post 1 Carousel</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f0fdf4; /* Very light green background to hide borders */
+        }
+        
+        /* Each slide is perfectly square */
+        .slide {
+            width: 1080px;
+            height: 1080px;
+            margin: 0 auto;
+            background: linear-gradient(180deg, #dcfce7 0%, #ffffff 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Outfit', sans-serif;
+            color: #064e3b; /* Dark forest green */
+            padding: 80px;
+            box-sizing: border-box;
+            page-break-after: always;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 2px dashed #bbf7d0; /* Just for web viewing separation */
+        }
+
+        h1 {
+            font-size: 80px;
+            font-weight: 800;
+            text-align: center;
+            line-height: 1.1;
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 55px;
+            font-weight: 500;
+            text-align: center;
+            color: #047857;
+        }
+
+        p {
+            font-size: 45px;
+            text-align: center;
+            line-height: 1.4;
+            font-weight: 300;
+            max-width: 900px;
+        }
+
+        .highlight {
+            background-color: #10b981;
+            color: white;
+            padding: 0 15px;
+            border-radius: 10px;
+        }
+
+        .swipe-hint {
+            position: absolute;
+            bottom: 40px;
+            right: 50px;
+            font-size: 30px;
+            font-weight: 800;
+            color: #10b981;
+        }
+
+        /* Decorative circle */
+        .circle {
+            position: absolute;
+            top: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #a7f3d0 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .content { z-index: 1; display: flex; flex-direction: column; align-items: center; }
+
+        @media print {
+            @page { size: 1080px 1080px; margin: 0; }
+            .slide { border: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Slide 1 -->
+    <div class="slide">
+        <div class="circle"></div>
+        <div class="content">
+            <h1>How Computers Finally Learned to <span class="highlight">See</span></h1>
+            <h2>(And why it changed the world)</h2>
+        </div>
+        <div class="swipe-hint">Swipe 👉</div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide">
+        <div class="circle" style="top: auto; bottom: -100px; right: -100px; left: auto;"></div>
+        <div class="content">
+            <h2>The Dark Ages (Before CNNs)</h2>
+            <p>Imagine trying to teach a computer what a "cat" is by manually typing out the math for pointy ears, whiskers, and fur.</p>
+            <p>It was exhausting, inaccurate, and didn't work if the cat was upside down!</p>
+        </div>
+        <div class="swipe-hint">Swipe 👉</div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide">
+        <div class="content">
+            <h2>Enter the <span class="highlight">CNN</span></h2>
+            <p>CNN stands for "Convolutional Neural Network."</p>
+            <p>Don't let the scary name fool you. It just means the computer learned to scan images like a human eye does.</p>
+        </div>
+        <div class="swipe-hint">Swipe 👉</div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide">
+        <div class="circle"></div>
+        <div class="content">
+            <h2>How is it different?</h2>
+            <p>Instead of humans doing the hard work, we just show the CNN thousands of pictures of cats.</p>
+            <p>It automatically figures out the rules. It teaches itself what "fur" and "whiskers" look like!</p>
+        </div>
+        <div class="swipe-hint">Swipe 👉</div>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="slide">
+        <div class="content">
+            <h1>What's your favorite AI tool that uses vision?</h1>
+            <h2>(Think: FaceID, Self-Driving Cars, Medical Scanners)</h2>
+            <p style="margin-top: 50px; font-weight: 500;">Let me know in the comments! 👇</p>
+        </div>
+    </div>
+
+</body>
+</html>
