@@ -3,16 +3,16 @@ layout: default
 ---
 
 <div class="hero">
-    <h1>Learn AI and Gain<br>the AI Advantage.</h1>
+    <h1>Learn AI and Gain<br>the <span style="color: var(--accent-color);">AI Advantage</span>.</h1>
     <h2>Simplifying Data Analytics & AI Engineering for everyone.<br>No overwhelming jargon. Just actionable skills.</h2>
     
     <div class="cta-form">
-        <p style="margin-top: 0; font-weight: 600; font-size: 18px; text-align: left; margin-bottom: 15px;">Join the community (Early Access)</p>
+        <p style="margin-top: 0; font-weight: 700; font-size: 20px; text-align: left; margin-bottom: 15px; color: var(--text-color);">Join the community (Early Access)</p>
         <form action="#" method="POST" onsubmit="alert('Future mailing list integration goes here!'); return false;" style="display: flex;">
             <input type="email" placeholder="Your best email address" required>
             <button type="submit">Get Updates</button>
         </form>
-        <p style="font-size: 13px; color: var(--light-text); text-align: left; margin-top: 10px; margin-bottom: 0;">Get free PDF summaries, early course access, and no spam.</p>
+        <p style="font-size: 14px; color: var(--light-text); font-weight: 500; text-align: left; margin-top: 15px; margin-bottom: 0;">Get free PDF summaries, early course access, and no spam.</p>
     </div>
 </div>
 
@@ -43,18 +43,38 @@ layout: default
 
 <hr>
 
+<!-- Added LinkedIn Posts Section as requested -->
+<div style="margin-bottom: 60px; background: white; padding: 40px; border-radius: 12px; border: 2px solid var(--border-color); box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
+    <h2 style="font-size: 32px; margin-top: 0;">My LinkedIn Slide Decks (PDFs)</h2>
+    <p style="font-size: 18px; margin-bottom: 30px;">Here are the visual summaries and carousels I've posted recently. You can click to view them directly on the site, or save them as PDFs!</p>
+    
+    <div style="display: flex; flex-direction: column; gap: 15px;">
+        <a href="assets/linkedin_pdfs/carousel_post1_what_is_cnn.html" style="background: var(--bg-color); padding: 15px 25px; border-radius: 8px; border: 1px solid var(--border-color); font-size: 18px; display: flex; align-items: center; justify-content: space-between;">
+            <span>📖 Post 1: How Computers Learned to See (Intro to CNNs)</span>
+            <span style="color: var(--accent-color); font-size: 24px;">&rarr;</span>
+        </a>
+        <a href="assets/linkedin_pdfs/carousel_post2_why_cnn.html" style="background: var(--bg-color); padding: 15px 25px; border-radius: 8px; border: 1px solid var(--border-color); font-size: 18px; display: flex; align-items: center; justify-content: space-between;">
+            <span>✨ Post 2: The Magic Behind AI Vision</span>
+            <span style="color: var(--accent-color); font-size: 24px;">&rarr;</span>
+        </a>
+        <a href="assets/linkedin_pdfs/carousel_post3_cnn_today.html" style="background: var(--bg-color); padding: 15px 25px; border-radius: 8px; border: 1px solid var(--border-color); font-size: 18px; display: flex; align-items: center; justify-content: space-between;">
+            <span>🚀 Post 3: Standing on the Shoulders of Giants (Transfer Learning)</span>
+            <span style="color: var(--accent-color); font-size: 24px;">&rarr;</span>
+        </a>
+    </div>
+</div>
+
+<hr>
+
 <div class="split-section">
     <div class="split-left">
         <h2>Your Guide</h2>
         <p style="font-size: 18px;">I'm an AI Master's student who has been teaching AI on YouTube since 2022.</p>
-        <p style="color: var(--light-text);">My journey with Machine Learning started in my first year of high school with Andrew Ng's classic courses and learning Python from scratch. I know exactly how confusing it is to start, which is why my mission is to break down complex AI and Data Analytics topics into plain English.</p>
-        <a href="{{ '/about.html' | relative_url }}" style="font-weight: 600; font-size: 16px;">Read my full story &rarr;</a>
+        <p style="color: var(--light-text); font-weight: 500;">My journey with Machine Learning started in my first year of high school with Andrew Ng's classic courses and learning Python from scratch. I know exactly how confusing it is to start, which is why my mission is to break down complex AI and Data Analytics topics into plain English.</p>
+        <a href="about.html" style="font-size: 18px; display: inline-block; margin-top: 10px;">Read my full story &rarr;</a>
     </div>
-    <div class="split-right">
-        <!-- Placeholder for User's Image -->
-        <div style="background-color: #e2e8f0; border-radius: 12px; width: 100%; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; color: #94a3b8; font-weight: bold;">
-            [Your Image Placeholder]
-        </div>
+    <div class="split-right" style="text-align: center;">
+        <img src="assets/images/profile.jpg" alt="Profile Picture" class="profile-img">
     </div>
 </div>
 
@@ -62,18 +82,18 @@ layout: default
 
 <div style="text-align: center; margin-bottom: 60px;">
     <h2>Frequently Asked Questions</h2>
-    <div style="text-align: left; max-width: 600px; margin: 0 auto;">
-        <div style="margin-bottom: 20px;">
-            <h4 style="margin-bottom: 5px;">Do I need to be a math genius to start?</h4>
-            <p style="color: var(--light-text); margin-top: 0;">No! While math helps later on, you can build incredible AI applications using Python libraries without needing a PhD in calculus.</p>
+    <div style="text-align: left; max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; border: 2px solid var(--border-color);">
+        <div style="margin-bottom: 25px;">
+            <h4 style="margin-bottom: 8px; font-size: 18px; color: var(--text-color);">Do I need to be a math genius to start?</h4>
+            <p style="color: var(--light-text); font-weight: 500; margin-top: 0; font-size: 16px;">No! While math helps later on, you can build incredible AI applications using Python libraries without needing a PhD in calculus.</p>
         </div>
-        <div style="margin-bottom: 20px;">
-            <h4 style="margin-bottom: 5px;">Are the courses free?</h4>
-            <p style="color: var(--light-text); margin-top: 0;">Yes, my current lab walkthroughs (TPs) and YouTube videos are entirely free to access.</p>
+        <div style="margin-bottom: 25px;">
+            <h4 style="margin-bottom: 8px; font-size: 18px; color: var(--text-color);">Are the courses free?</h4>
+            <p style="color: var(--light-text); font-weight: 500; margin-top: 0; font-size: 16px;">Yes, my current lab walkthroughs (TPs) and YouTube videos are entirely free to access.</p>
         </div>
-        <div style="margin-bottom: 20px;">
-            <h4 style="margin-bottom: 5px;">Can I sponsor your content?</h4>
-            <p style="color: var(--light-text); margin-top: 0;">Yes, please check the <a href="{{ '/partnerships.html' | relative_url }}">Partnerships</a> page for details and pricing.</p>
+        <div style="margin-bottom: 0;">
+            <h4 style="margin-bottom: 8px; font-size: 18px; color: var(--text-color);">Can I sponsor your content?</h4>
+            <p style="color: var(--light-text); font-weight: 500; margin-top: 0; font-size: 16px;">Yes, please check the <a href="partnerships.html">Partnerships</a> page for details and pricing.</p>
         </div>
     </div>
 </div>
