@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ site.title | default: "AI Simplified" }}</title>
     <!-- Use direct relative paths so it works perfectly locally and on GitHub root -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 </head>
 <body>
     <div class="container">
         
         <!-- Top Navigation Bar -->
         <nav class="navbar">
-            <a href="index.html" class="navbar-brand">AI Simplified</a>
+            <a href="{{ '/' | relative_url }}" class="navbar-brand">AI Simplified</a>
             <div class="nav-links">
                 <a href="{{ '/about.html' | relative_url }}">My Story</a>
                 <a href="{{ '/projects.html' | relative_url }}">Portfolio Projects</a>

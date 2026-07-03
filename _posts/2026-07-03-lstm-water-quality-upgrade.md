@@ -1,20 +1,22 @@
 ---
 layout: post
-title: "The LSTM Upgrade: Remembering Long-Term Anomalies"
+title: "The LSTM Upgrade: Long-Term Anomalies (PyTorch)"
 date: 2026-07-03
 ---
 
 # The LSTM Upgrade:<br>Long Short-Term Memory
 
-Fixing the Short-Term Memory of RNNs.
+Fixing the Short-Term Memory of RNNs using PyTorch.
 
 Portfolio Project Part 2: Water Potability.
 
-## The Problem with RNNs
+## The Data Story: Vanishing Memories
 
-In our previous project, the SimpleRNN failed to remember water quality spikes from weeks ago.
+![Media](../portfolio_site/assets/images/dashboards/water_dashboard.png)
 
-This happens because of the **Vanishing Gradient Problem**. As the network loops backwards to learn, the memory signal gets weaker and weaker until it fades to zero.
+Looking at our correlation heatmap in the dashboard, we see complex relationships between variables like Sulfate and Solids.
+
+In our previous project, the simple RNN failed to remember water quality spikes from weeks ago. The signal faded to zero due to the **Vanishing Gradient Problem**.
 
 ## Enter the LSTM Gates
 
@@ -24,29 +26,35 @@ LSTM fixes this by introducing an internal conveyor belt (the Cell State) and th
 
 2. **Input Gate:** Decides what new data (like a sudden spike in Sulfate) is important enough to save.
 
-3. **Output Gate:** Decides what memory to use right now to make the prediction.
+3. **Output Gate:** Decides what memory to use right now.
 
-## Implementing LSTM in Keras
+## Implementing LSTM in PyTorch
 
-Swapping out a SimpleRNN for an LSTM in Python is incredibly easy.
-
-We use the same scaled `water_potability.csv` data.
+In PyTorch, we swap `nn.RNN` for `nn.LSTM`. Notice how we now receive both the hidden state `h_n` and the cell state `c_n`!
 
 ```python
-from tensorflow.keras.layers import LSTM, Dense
+import torch.nn as nn
 
-model = Sequential([
-    # 64 memory cells to capture complex temporal patterns in water quality
-    LSTM(64, return_sequences=False, input_shape=(time_steps, 9)),
-    Dense(1, activation='sigmoid')
-])
+class WaterLSTM(nn.Module):
+    def __init__(self):
+        super().__init__()
+        # 64 memory cells to capture complex temporal patterns
+        self.lstm = nn.LSTM(input_size=9, hidden_size=64, batch_first=True)
+        self.fc = nn.Linear(64, 1)
+        self.sigmoid = nn.Sigmoid()
+        
+    def forward(self, x):
+        # lstm returns the output sequence, and a tuple of (hidden_state, cell_state)
+        out, (h_n, c_n) = self.lstm(x)
+        # We use the final hidden state to make our prediction
+        return self.sigmoid(self.fc(h_n[-1]))
 
-model.compile(optimizer='adam', loss='binary_crossentropy')
+model = WaterLSTM()
 ```
 
 ## Is LSTM Perfect?
 
-While LSTMs give us incredible accuracy and long-term memory, they are computationally heavy.
+While LSTMs give us incredible accuracy and long-term memory for our water quality predictions, they are computationally heavy.
 
 All those gates require intense matrix multiplication.
 

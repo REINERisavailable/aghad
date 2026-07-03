@@ -1,67 +1,84 @@
 ---
 layout: post
-title: "Predicting Water Quality with RNNs"
+title: "Predicting Water Quality with RNNs (PyTorch)"
 date: 2026-07-03
 ---
 
 # Predicting Water Quality<br>with RNNs
 
-A deep dive into Sequence Models.
+A deep dive into Sequence Models using PyTorch.
 
-Portfolio Project: Analysing the Water Potability Dataset.
+Portfolio Project: Data Storytelling with the Water Potability Dataset.
 
-## Why RNNs for Water Data?
+## The Business Problem
 
-Standard Neural Networks treat every data point independently.
+Access to safe drinking water is a critical global issue.
 
-But what if we are tracking water quality **over time** (e.g., daily readings of pH, Sulfate, Chloramines)?
+Our dataset contains 9 key metrics including pH, Hardness, and Sulfate levels.
 
-**Recurrent Neural Networks (RNNs)** have a 'memory' that remembers the previous time steps, allowing them to spot temporal anomalies in the water supply.
+**The Data Story:** We noticed that 39% of the water samples were unsafe. Standard models analyze each sample independently, but what if we need to monitor these sensors **over time** to predict a failure before it happens?
 
-## Step 1: The Data
+## Why RNNs?
 
-We use the **water_potability.csv** dataset.
+Recurrent Neural Networks (RNNs) have an internal 'memory'.
 
-It contains 9 critical features like `ph`, `Hardness`, and `Turbidity`.
+They don't just look at today's pH level; they remember yesterday's level too. This allows them to spot dangerous trends in the water supply that a standard network would miss.
 
-First, we must normalize the data. RNNs are highly sensitive to unscaled inputs, which can cause the **Exploding Gradient Problem**.
+## Data Preparation & KPIs
+
+![Media](../portfolio_site/assets/images/dashboards/water_dashboard.png)
+
+Looking at our KPI Dashboard, we see a heavy imbalance. We must normalize the data using `StandardScaler` to ensure the neural network doesn't over-prioritize large numbers like 'Conductivity' over 'pH'.
 
 ```python
 import pandas as pd
+import torch
+from torch.utils.data import DataLoader, TensorDataset
 from sklearn.preprocessing import StandardScaler
 
 df = pd.read_csv('DATASETS/water_potability.csv')
-# Fill missing values
 df.fillna(df.mean(), inplace=True)
 
-# Scale the features
+# Scale and convert to PyTorch Tensors
 scaler = StandardScaler()
-X_scaled = scaler.fit_transform(df.drop('Potability', axis=1))
-y = df['Potability'].values
+X = torch.tensor(scaler.fit_transform(df.drop('Potability', axis=1)), dtype=torch.float32)
+y = torch.tensor(df['Potability'].values, dtype=torch.float32).unsqueeze(1)
+
+# Prepare for sequence modeling (Samples, Timesteps, Features)
+X_seq = X.unsqueeze(1)
+dataset = TensorDataset(X_seq, y)
+loader = DataLoader(dataset, batch_size=32, shuffle=True)
 ```
 
-## Step 2: Building the RNN
+## Building the RNN in PyTorch
 
-In Keras, building an RNN is straightforward.
+In PyTorch, we define our architecture by subclassing `nn.Module`.
 
-We use `SimpleRNN` layers. Since water data isn't incredibly complex, a single layer with 32 units is a good starting point.
+We use `nn.RNN` to process the sequence, and a linear layer to output the final potability prediction.
 
 ```python
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import SimpleRNN, Dense
+import torch.nn as nn
 
-model = Sequential([
-    # Reshape X_scaled to (samples, timesteps, features)
-    SimpleRNN(32, input_shape=(time_steps, 9)),
-    Dense(1, activation='sigmoid')
-])
+class WaterRNN(nn.Module):
+    def __init__(self):
+        super().__init__()
+        # input_size=9 features, hidden_size=32 memory cells
+        self.rnn = nn.RNN(input_size=9, hidden_size=32, batch_first=True)
+        self.fc = nn.Linear(32, 1)
+        self.sigmoid = nn.Sigmoid()
+        
+    def forward(self, x):
+        # out contains the sequence, h_n is the final memory state
+        out, h_n = self.rnn(x)
+        # Pass the final memory state to the decision layer
+        return self.sigmoid(self.fc(h_n[-1]))
 
-model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+model = WaterRNN()
 ```
 
 ## The Limitation of SimpleRNN
 
-While this model trains quickly, it suffers from **Short-Term Memory**.
+While this PyTorch model trains quickly, it suffers from **Short-Term Memory** (The Vanishing Gradient).
 
 If an anomaly in water quality depends on a reading from 30 days ago, the SimpleRNN will forget it.
 
