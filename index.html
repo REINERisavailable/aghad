@@ -43,24 +43,21 @@ layout: default
 
 <hr>
 
-<!-- Added LinkedIn Posts Section as requested -->
+<!-- Added Recent Portfolio Projects Section -->
 <div style="margin-bottom: 60px; background: white; padding: 40px; border-radius: 12px; border: 2px solid var(--border-color); box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
-    <h2 style="font-size: 32px; margin-top: 0;">My LinkedIn Slide Decks (PDFs)</h2>
-    <p style="font-size: 18px; margin-bottom: 30px;">Here are the visual summaries and carousels I've posted recently. You can click to view them directly on the site, or save them as PDFs!</p>
+    <h2 style="font-size: 32px; margin-top: 0;">Recent Portfolio Projects</h2>
+    <p style="font-size: 18px; margin-bottom: 30px;">Deep dive analyses of real-world datasets and AI engineering concepts.</p>
     
     <div style="display: flex; flex-direction: column; gap: 15px;">
-        <a href="assets/linkedin_pdfs/carousel_post1_what_is_cnn.html" style="background: var(--bg-color); padding: 15px 25px; border-radius: 8px; border: 1px solid var(--border-color); font-size: 18px; display: flex; align-items: center; justify-content: space-between;">
-            <span>📖 Post 1: How Computers Learned to See (Intro to CNNs)</span>
+        {% for post in site.posts limit:3 %}
+        <a href="{{ post.url | relative_url }}" style="background: var(--bg-color); padding: 15px 25px; border-radius: 8px; border: 1px solid var(--border-color); font-size: 18px; display: flex; align-items: center; justify-content: space-between;">
+            <span>📖 {{ post.title }}</span>
             <span style="color: var(--accent-color); font-size: 24px;">&rarr;</span>
         </a>
-        <a href="assets/linkedin_pdfs/carousel_post2_why_cnn.html" style="background: var(--bg-color); padding: 15px 25px; border-radius: 8px; border: 1px solid var(--border-color); font-size: 18px; display: flex; align-items: center; justify-content: space-between;">
-            <span>✨ Post 2: The Magic Behind AI Vision</span>
-            <span style="color: var(--accent-color); font-size: 24px;">&rarr;</span>
-        </a>
-        <a href="assets/linkedin_pdfs/carousel_post3_cnn_today.html" style="background: var(--bg-color); padding: 15px 25px; border-radius: 8px; border: 1px solid var(--border-color); font-size: 18px; display: flex; align-items: center; justify-content: space-between;">
-            <span>🚀 Post 3: Standing on the Shoulders of Giants (Transfer Learning)</span>
-            <span style="color: var(--accent-color); font-size: 24px;">&rarr;</span>
-        </a>
+        {% endfor %}
+    </div>
+    <div style="margin-top: 20px; text-align: right;">
+        <a href="{{ '/projects.html' | relative_url }}" style="font-size: 16px;">View all projects &rarr;</a>
     </div>
 </div>
 
