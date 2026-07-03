@@ -1,64 +1,69 @@
 ---
 layout: post
-title: "Understanding RNNs: Predicting Water Quality"
+title: "Predicting Water Quality with RNNs"
 date: 2026-07-03
 ---
 
+# Predicting Water Quality<br>with RNNs
 
+A deep dive into Sequence Models.
 
-ICON: 💧
-# Understanding RNNs
-## Predicting Water Quality
-Deep Dive Portfolio Project #1
-We aren't using dummy data. Let's analyze the `water_potability.csv` dataset.
+Portfolio Project: Analysing the Water Potability Dataset.
 
-***
+## Why RNNs for Water Data?
 
-ICON: 📊
-## The Real Dataset
-Before building AI, you must understand your data. Our dataset has 3,276 records of water samples.
-We track 9 chemicals: `pH`, `Hardness`, `Solids`, `Chloramines`, `Sulfate`, `Conductivity`, `Organic_carbon`, `Trihalomethanes`, and `Turbidity`.
-Our goal: Predict if the water is safe to drink (`Potability = 1`).
+Standard Neural Networks treat every data point independently.
 
-***
+But what if we are tracking water quality **over time** (e.g., daily readings of pH, Sulfate, Chloramines)?
 
-ICON: 🧹
-## Data Cleaning & Imputation
-Real datasets are messy. Some sensors fail and leave missing values (`NaN`).
+**Recurrent Neural Networks (RNNs)** have a 'memory' that remembers the previous time steps, allowing them to spot temporal anomalies in the water supply.
+
+## Step 1: The Data
+
+We use the **water_potability.csv** dataset.
+
+It contains 9 critical features like `ph`, `Hardness`, and `Turbidity`.
+
+First, we must normalize the data. RNNs are highly sensitive to unscaled inputs, which can cause the **Exploding Gradient Problem**.
+
 ```python
 import pandas as pd
-
-# Load the real dataset
-df = pd.read_csv('DATASETS/water_potability.csv')
-
-# Impute missing values with the mean
-df.fillna(df.mean(), inplace=True)
-```
-If we don't impute, the neural network will crash.
-
-***
-
-ICON: ⚖️
-## Normalization is Critical
-Look at the data: `pH` ranges from 0-14, but `Solids` can reach 40,000!
-Neural networks are highly sensitive to scale. If we don't scale the data, the network will think `Solids` is 3,000x more important than `pH`.
-```python
 from sklearn.preprocessing import StandardScaler
+
+df = pd.read_csv('DATASETS/water_potability.csv')
+# Fill missing values
+df.fillna(df.mean(), inplace=True)
+
+# Scale the features
 scaler = StandardScaler()
-X_scaled = scaler.fit_transform(X)
+X_scaled = scaler.fit_transform(df.drop('Potability', axis=1))
+y = df['Potability'].values
 ```
 
-***
+## Step 2: Building the RNN
 
-ICON: 🧠
-## The RNN Architecture
-Recurrent Neural Networks (RNNs) have a "memory" of the previous timestep. By grouping our water samples into sequences of 5, the RNN can learn how the chemical composition is changing over time.
+In Keras, building an RNN is straightforward.
+
+We use `SimpleRNN` layers. Since water data isn't incredibly complex, a single layer with 32 units is a good starting point.
+
 ```python
-from tensorflow.keras import layers, models
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import SimpleRNN, Dense
 
-model = models.Sequential([
-    layers.SimpleRNN(32, input_shape=(5, 9)),
-    layers.Dense(1, activation='sigmoid')
+model = Sequential([
+    # Reshape X_scaled to (samples, timesteps, features)
+    SimpleRNN(32, input_shape=(time_steps, 9)),
+    Dense(1, activation='sigmoid')
 ])
+
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 ```
-It's not just math; it's a dynamic system learning the flow of time!
+
+## The Limitation of SimpleRNN
+
+While this model trains quickly, it suffers from **Short-Term Memory**.
+
+If an anomaly in water quality depends on a reading from 30 days ago, the SimpleRNN will forget it.
+
+To solve this, we need an upgrade. Check out the next project: **LSTM Networks**.
+
