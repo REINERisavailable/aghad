@@ -1,40 +1,10 @@
-# 🛡️ Site Content Guardrails & Strategy
+# AI Generation Guardrails (Memory)
 
-This file acts as the source of truth for your GitHub Pages website. 
+This file serves as permanent memory for all AI interactions involving this repository.
 
-## 🎯 Target Audience
-*   **HR & Business Stakeholders:** Need to see your passion, organization, and clear communication. Let the *work* speak for itself. You are a Master's student who understands the core value behind the code.
-*   **Career Changers / Students:** Need simple, jargon-free explanations.
-
-## ✍️ Post Writing Blueprint
-Since your site runs on Markdown, your content is 100% extractable. You can move these `.md` files to any future system (React, Hugo, Next.js).
-
-Every new post you create in the `_posts` folder MUST follow this structure:
-
-```markdown
----
-layout: post
-title: "The Title"
-date: YYYY-MM-DD
----
-
-## 🪝 The Hook
-Why should the reader care? What real-world problem does this solve?
-
-## 🧠 What is it?
-Explain the concept as simply as possible (use analogies). NO Jargon unless immediately defined.
-
-## 💼 Why it matters (Business Value)
-Why would a company care about this? Does it save money, time, or compute power?
-
-## 🛠️ How I built it
-The technical implementation. Code blocks go here.
-
-## 📺 Video Walkthrough
-[Link to your YouTube Video]
-```
-
-## 🎨 Design Rules
-*   **Font:** SF Pro Display (with system fallbacks for non-Apple users).
-*   **Speed:** Zero heavy animations, zero bloat. Loads instantly.
-*   **Simplicity:** Clean, minimalist, and heavily focused on readability.
+**CRITICAL RULES:**
+1. **NO SURFACE-LEVEL CONTENT:** Never generate high-level, generic blog posts or LinkedIn carousels. Always use real datasets (like `DATASETS/water_potability.csv`) and provide actual code implementations, exploratory data analysis (EDA), and deep-dive technical insights.
+2. **BRANDING & CSS:** The website uses a sleek, green-themed design system. The font must always be the local `SF Pro Display` located in `portfolio_site/Web Fonts`. When creating pages, ensure they use `layout: post` or `layout: default` so they inherit the CSS.
+3. **PORTFOLIO PROJECTS, NOT LABS:** Never refer to the work as "university labs", "TPs", or "homework". They must always be framed as "Portfolio Projects" or "Deep Dives" to impress recruiters and teach others.
+4. **CAROUSELS MUST LINK TO CODE:** LinkedIn Carousels should conceptually explain the topic BUT must also include snippets of the real code/dataset, and always link back to the full Jupyter Notebook or the full website post for the actual implementation.
+5. **ARABIC EXPLANATIONS IN NOTEBOOKS:** Jupyter notebooks meant for beginners must contain detailed Arabic explanations for every single concept (Epoch, Loss, Dropout, etc.) assuming zero prior Python or ML knowledge.

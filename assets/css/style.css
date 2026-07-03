@@ -1,20 +1,29 @@
 /* Sleek Pro CSS - Green Branding */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@font-face {
+    font-family: 'SF Pro Display';
+    src: url('../../Web Fonts/f80bfd00af2dfcccf50416a47dd960da.woff2') format('woff2'),
+         url('../../Web Fonts/f80bfd00af2dfcccf50416a47dd960da.woff') format('woff'),
+         url('../../Web Fonts/f80bfd00af2dfcccf50416a47dd960da.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
 
 :root {
-    --bg-color: #f0fdf4; /* Light green fading */
-    --text-color: #064e3b; /* Dark forest green */
-    --light-text: #047857; /* Medium green */
-    --accent-color: #10b981; /* Vibrant green */
-    --accent-hover: #059669; /* Darker vibrant green */
+    --bg-color: #f0fdf4;
+    --text-color: #064e3b;
+    --light-text: #047857;
+    --accent-color: #10b981;
+    --accent-hover: #059669;
     --card-bg: #ffffff;
-    --border-color: #a7f3d0; /* Soft green border */
+    --border-color: #a7f3d0;
     --success-bg: #dcfce7;
     --success-text: #166534;
 }
 
 body {
-    font-family: "SF Pro Display", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background: linear-gradient(180deg, #dcfce7 0%, #ffffff 100%);
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -108,8 +117,14 @@ hr { border: 0; border-top: 2px solid var(--border-color); margin: 60px 0; }
 .post-date { color: var(--light-text); font-size: 14px; font-weight: 500; }
 
 /* Markdown Content */
-.post-content h2 { color: var(--text-color); margin-top: 40px; }
-.post-content p { font-size: 18px; color: var(--text-color); }
+.post-content { background: white; padding: 40px; border-radius: 12px; border: 2px solid var(--border-color); box-shadow: 0 10px 25px rgba(0,0,0,0.05); margin-bottom: 60px; }
+.post-content h2 { color: var(--text-color); margin-top: 40px; font-size: 32px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; }
+.post-content h3 { color: var(--accent-hover); margin-top: 30px; font-size: 24px; }
+.post-content p { font-size: 18px; color: var(--text-color); line-height: 1.8; }
+.post-content ul, .post-content ol { font-size: 18px; color: var(--text-color); line-height: 1.8; padding-left: 20px; }
+.post-content li { margin-bottom: 10px; }
+.post-content blockquote { border-left: 5px solid var(--accent-color); margin: 20px 0; padding: 15px 20px; background-color: var(--bg-color); font-style: italic; border-radius: 0 8px 8px 0; }
 .post-content code { background-color: #d1fae5; color: #065f46; padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 15px; font-weight: bold; }
-.post-content pre { background-color: #064e3b; color: #f8fafc; padding: 20px; border-radius: 10px; overflow-x: auto; }
-.post-content pre code { background-color: transparent; color: inherit; padding: 0; font-weight: normal; }
+.post-content pre { background-color: #064e3b; color: #f8fafc; padding: 20px; border-radius: 10px; overflow-x: auto; margin: 20px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+.post-content pre code { background-color: transparent; color: inherit; padding: 0; font-weight: normal; font-size: 14px; }
+.post-content img { max-width: 100%; height: auto; border-radius: 12px; margin: 20px 0; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
