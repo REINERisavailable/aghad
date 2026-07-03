@@ -3,6 +3,7 @@ title: "AI Simplified - AI Engineering & Data Analytics"
 description: "Demystifying AI Engineering and Data Analytics for everyone."
 url: "https://REINERisavailable.github.io"
 baseurl: "/aghad" # Required for GitHub Pages project sites
+permalink: /:title.html # Ensures all posts are in the root folder, fixing relative CSS paths for local viewing
 
 # Exclude these files from the build
 exclude:

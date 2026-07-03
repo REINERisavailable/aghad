@@ -1,6 +1,8 @@
 /* Sleek Pro CSS - Green Branding */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-
+@font-face {
+    font-family: 'SF Pro Display';
+    src: url('../../Web Fonts/f80bfd00af2dfcccf50416a47dd960da.woff2') format('woff2');
+}
 :root {
     --bg-color: #f0fdf4; /* Light green fading */
     --text-color: #064e3b; /* Dark forest green */
